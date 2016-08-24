@@ -536,7 +536,9 @@ const Select = React.createClass({
 		this.props.onChange(value);
 	},
 
-	selectValue (value) {
+	selectValue (_value) {
+		// after state update we are loosing input value
+		const value = Object.assign({}, _value);
 		//NOTE: update value in the callback to make sure the input value is empty so that there are no sttyling issues (Chrome had issue otherwise)
 		this.hasScrolledToOption = false;
 		if (this.props.multi) {
